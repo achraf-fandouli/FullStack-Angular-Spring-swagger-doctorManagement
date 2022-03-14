@@ -19,6 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/doctors")
 @Api(description = "this is a Doctor controller")
+@CrossOrigin("*")
 public class DoctorController {
 
     @Autowired
