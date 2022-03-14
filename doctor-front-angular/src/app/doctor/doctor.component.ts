@@ -11,9 +11,9 @@ export class DoctorComponent implements OnInit {
   constructor(private httpClient:HttpClient) { }
 
   ngOnInit(): void {
-    this.httpClient.get('http://localhost:8081/doctors').toPromise()
-      .then(data=>console.table(data))
-      .catch(ex=>console.log(ex));
+    this.httpClient.get('http://localhost:8081/doctors')
+      .subscribe(data => console.table(data),
+          ex=>console.log(ex));
   }
 
 }
