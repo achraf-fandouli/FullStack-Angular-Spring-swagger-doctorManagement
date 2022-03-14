@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {DocrtorService} from "../core/services/docrtor.service";
 
 @Component({
   selector: 'app-doctor',
@@ -7,13 +8,17 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./doctor.component.css']
 })
 export class DoctorComponent implements OnInit {
-
-  constructor(private httpClient:HttpClient) { }
+public doctors:any;
+  constructor(private doctorServie: DocrtorService) {
+  }
 
   ngOnInit(): void {
-    this.httpClient.get('http://localhost:8081/doctors')
-      .subscribe(data => console.table(data),
-          ex=>console.log(ex));
+
+    this.doctorServie.getAll().subscribe(data => {
+        this.doctors=data;
+      }, ex =>
+        console.log(ex)
+    );
   }
 
 }
