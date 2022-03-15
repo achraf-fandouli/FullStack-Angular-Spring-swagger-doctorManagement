@@ -8,6 +8,7 @@ import { DoctorComponent } from './doctor/doctor.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TableModule} from "primeng/table";
 import {ButtonModule} from "primeng/button";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ButtonModule} from "primeng/button";
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
