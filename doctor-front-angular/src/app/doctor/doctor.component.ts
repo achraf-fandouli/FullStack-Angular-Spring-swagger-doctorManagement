@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DocrtorService} from "../core/services/docrtor.service";
+import {ConfirmationService} from "primeng/api";
 
 @Component({
   selector: 'app-doctor',
@@ -10,7 +11,7 @@ import {DocrtorService} from "../core/services/docrtor.service";
 export class DoctorComponent implements OnInit {
   public doctors: any;
 
-  constructor(private doctorServie: DocrtorService) {
+  constructor(private doctorServie: DocrtorService, private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -28,12 +29,21 @@ export class DoctorComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.doctorServie.delete(id).subscribe(res => {
-      if (res.success) {
-        this.getAll();
-      }
-      console.log(res);
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to delete this doctor?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.doctorServie.delete(id).subscribe(res => {
+          if (res.success = true) {
+            this.getAll();
+          }
+          console.log(res);
 
-    }, ex => console.log(ex));
+        }, ex => console.log(ex));
+      }
+    });
+
+
   }
 }

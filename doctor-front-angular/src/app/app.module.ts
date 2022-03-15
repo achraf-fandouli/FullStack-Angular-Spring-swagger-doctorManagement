@@ -9,6 +9,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {TableModule} from "primeng/table";
 import {ButtonModule} from "primeng/button";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ConfirmationService} from "primeng/api";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -21,9 +23,11 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     FormsModule,
     HttpClientModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
