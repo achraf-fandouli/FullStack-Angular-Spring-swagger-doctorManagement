@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import { DoctorComponent } from './doctor/doctor.component';
 import {HttpClientModule} from "@angular/common/http";
+import {TableModule} from "primeng/table";
+import {ButtonModule} from "primeng/button";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
