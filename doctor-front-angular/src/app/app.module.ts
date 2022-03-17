@@ -11,11 +11,13 @@ import {ButtonModule} from "primeng/button";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DoctorComponent
+    DoctorComponent,
+    AddDoctorComponent
   ],
   imports: [
     BrowserModule,
