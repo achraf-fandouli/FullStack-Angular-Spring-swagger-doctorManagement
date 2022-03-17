@@ -1,5 +1,6 @@
 package com.jee.cabinetSpring.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class Doctor {
     //la taille de champs dans le formulaire
     @Size(min = 3,max = 10,message = "la taille doit etre entre 3 et 10")
     @Pattern(regexp = "[a-zA-Z]+",message = "le nom doit contenir que des alphabets")
+    @JsonProperty(value = "nom")//pour changer le nom de la propriete dans la partie frontend
     private String firstname;
 
     //le champ dans le formulaire ne doit pas etre vide ni espace
