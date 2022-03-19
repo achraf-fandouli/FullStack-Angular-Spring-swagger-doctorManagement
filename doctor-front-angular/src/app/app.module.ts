@@ -12,6 +12,9 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService} from "primeng/api";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
+import {InputTextModule} from "primeng/inputtext";
+import {PasswordModule} from "primeng/password";
+import {RadioButtonModule} from "primeng/radiobutton";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
     TableModule,
     ButtonModule,
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InputTextModule,
+    PasswordModule,
+    RadioButtonModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

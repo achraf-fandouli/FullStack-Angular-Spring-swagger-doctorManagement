@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Doctor} from "../../shared/model/doctor";
+import {DoctorService} from "../../core/services/doctor.service";
 
 @Component({
   selector: 'app-add-doctor',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDoctorComponent implements OnInit {
 
-  constructor() { }
+  doctor = new Doctor();
+
+  constructor(private doctorService: DoctorService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  add() {
+    this.doctorService.save(this.doctor).subscribe(res => {
+      console.log(res);
+    }, ex => {
+      console.log(ex);
+    })
   }
 
 }

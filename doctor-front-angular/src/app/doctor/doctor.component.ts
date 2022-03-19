@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {DocrtorService} from "../core/services/docrtor.service";
+import {DoctorService} from "../core/services/doctor.service";
 import {ConfirmationService} from "primeng/api";
+import {Doctor} from "../shared/model/doctor";
 
 @Component({
   selector: 'app-doctor',
@@ -11,7 +12,7 @@ import {ConfirmationService} from "primeng/api";
 export class DoctorComponent implements OnInit {
   public doctors: any;
 
-  constructor(private doctorServie: DocrtorService, private confirmationService: ConfirmationService) {
+  constructor(private doctorServie: DoctorService, private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -43,7 +44,5 @@ export class DoctorComponent implements OnInit {
         }, ex => console.log(ex));
       }
     });
-
-
   }
 }

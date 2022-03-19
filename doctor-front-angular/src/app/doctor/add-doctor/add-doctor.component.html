@@ -1,1 +1,42 @@
-<p>add-doctor works!</p>
+<h2 class="elemCenter">Ajout nouveau Docteur </h2>
+
+  <label for="float-input">Nom</label>
+  <input id="float-input" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.nom" />
+<br>
+  <label for="float-input1">Prénom</label>
+  <input id="float-input1" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.lastname" />
+<br>
+  <label for="float-input2">Email</label>
+  <input id="float-input2" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.emailAddress" />
+<br>
+  <label for="float-input3">Phone</label>
+  <input id="float-input3" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.phone" />
+<br>
+  <label for="float-input4">Spécialité</label>
+  <input id="float-input4" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.specialite"/>
+<!--
+<br>
+<label for="float-input5">Mot de passe</label>
+<input id="float-input5" type="password"  class="inputStyle" pInputText [(ngModel)]="doctor.password"/>
+<br>
+<label>Role:</label>
+<br>
+<p-radioButton name="groupname"
+               label="Administrateur"
+               value="ROLE_ADMIN"
+               [(ngModel)]="doctor.role">
+
+</p-radioButton>
+
+<p-radioButton name="groupname"
+               label="Utilisateur"
+               value="ROLE_USER"
+               [(ngModel)]="doctor.role">
+
+</p-radioButton>
+-->
+<br>
+<p-button class="ui-button-success" label="Ajouter"
+(click)="add()">
+
+</p-button>
