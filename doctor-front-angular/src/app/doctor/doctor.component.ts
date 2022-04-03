@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DoctorService} from "../core/services/doctor.service";
-import {ConfirmationService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 import {Doctor} from "../shared/model/doctor";
 
 @Component({
@@ -12,7 +12,7 @@ import {Doctor} from "../shared/model/doctor";
 export class DoctorComponent implements OnInit {
   public doctors: any;
 
-  constructor(private doctorServie: DoctorService, private confirmationService: ConfirmationService) {
+  constructor(private doctorServie: DoctorService, private confirmationService: ConfirmationService,private messageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -36,12 +36,28 @@ export class DoctorComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.doctorServie.delete(id).subscribe(res => {
-          if (res.success = true) {
-            this.getAll();
+          this.getAll();
+          if(res.success=true){
+            this.messageService.add({
+              severity:'success',
+              summary:res.message,detail:res.detail});
+          }
+          else {
+            this.messageService.add({
+              severity:'warn',
+              summary:res.message,detail:res.detail});
           }
           console.log(res);
 
-        }, ex => console.log(ex));
+        }, ex => {
+          console.log(ex);
+          this.messageService.add({
+            severity: 'error',
+            summary: ex.message,
+            detail: ex.detail
+          });
+    
+        });
       }
     });
   }

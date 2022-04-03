@@ -26,7 +26,7 @@ public class Doctor {
     //le champ dans le formulaire ne doit pas etre vide ni espace
     @NotEmpty
     //la taille de champs dans le formulaire
-    @Size(min = 3,max = 10,message = "la taille doit etre entre 3 et 10")
+    @Size(min = 2,max = 25,message = "la taille doit etre entre 2 et 25")
     @Pattern(regexp = "[a-zA-Z]+",message = "le nom doit contenir que des alphabets")
     @JsonProperty(value = "nom")//pour changer le nom de la propriete dans la partie frontend
     private String firstname;
@@ -34,7 +34,7 @@ public class Doctor {
     //le champ dans le formulaire ne doit pas etre vide ni espace
     @NotEmpty
     //la taille de champs dans le formulaire
-    @Size(min = 3,max = 10,message = "la taille doit etre entre 3 et 10")
+    @Size(min = 2,max = 25,message = "la taille doit etre entre 2 et 25")
     @Pattern(regexp = "[a-zA-Z]+",message = "le nom doit contenir que des alphabets")
     private String lastname;
 

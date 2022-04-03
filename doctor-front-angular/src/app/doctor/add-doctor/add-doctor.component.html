@@ -34,9 +34,8 @@
                [(ngModel)]="doctor.role">
 
 </p-radioButton>
+[disabled]="nom1.invalid"
 -->
 <br>
-<p-button class="ui-button-success" label="Ajouter"
-(click)="add()">
-
-</p-button>
+<button pButton  class="ui-button-success" label="Ajouter"
+(click)="add()" ></button>

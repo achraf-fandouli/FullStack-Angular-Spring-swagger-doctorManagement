@@ -9,12 +9,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {TableModule} from "primeng/table";
 import {ButtonModule} from "primeng/button";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
-import {ConfirmationService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
 import {InputTextModule} from "primeng/inputtext";
 import {PasswordModule} from "primeng/password";
 import {RadioButtonModule} from "primeng/radiobutton";
+import {ToastModule} from "primeng/toast";
 
 @NgModule({
   declarations: [
@@ -33,9 +34,10 @@ import {RadioButtonModule} from "primeng/radiobutton";
     BrowserAnimationsModule,
     InputTextModule,
     PasswordModule,
-    RadioButtonModule
+    RadioButtonModule,
+    ToastModule
   ],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
