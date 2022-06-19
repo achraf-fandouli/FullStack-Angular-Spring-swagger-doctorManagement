@@ -1,20 +1,48 @@
-<h2 class="elemCenter">Ajout nouveau Docteur </h2>
+<form #f="ngForm" (ngSubmit)="f.form.valid && add()">
 
+
+  <h2 class="elemCenter">Ajout nouveau Docteur </h2>
+  
   <label for="float-input">Nom</label>
-  <input id="float-input" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.nom" />
-<br>
+  <input id="float-input" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.nom" 
+  name="nom" #nom="ngModel"
+    required>
+  <div *ngIf="f.submitted && nom.invalid">
+    nom réquis
+  </div>
+  <br>
   <label for="float-input1">Prénom</label>
-  <input id="float-input1" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.lastname" />
-<br>
+  <input id="float-input1" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.lastname"
+  name="prenom" #prenom="ngModel"
+  required>
+<div *ngIf="f.submitted && prenom.invalid">
+  nom réquis
+</div>
+  <br>
   <label for="float-input2">Email</label>
-  <input id="float-input2" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.emailAddress" />
-<br>
+  <input id="float-input2" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.emailAddress" 
+  name="mail" #mail="ngModel"
+  required>
+<div *ngIf="f.submitted && prenom.invalid">
+  Email réquis
+</div>
+  <br>
   <label for="float-input3">Phone</label>
-  <input id="float-input3" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.phone" />
-<br>
+  <input id="float-input3" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.phone" 
+  name="phone" #phone="ngModel"
+  required>
+<div *ngIf="f.submitted && phone.invalid">
+  phone réquis
+</div>
+  <br>
   <label for="float-input4">Spécialité</label>
-  <input id="float-input4" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.specialite"/>
-<!--
+  <input id="float-input4" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.specialite" 
+  name="specialite" #specialite="ngModel"
+  required>
+<div *ngIf="f.submitted && specialite.invalid">
+  Spécialité réquis
+</div>
+  <!--
 <br>
 <label for="float-input5">Mot de passe</label>
 <input id="float-input5" type="password"  class="inputStyle" pInputText [(ngModel)]="doctor.password"/>
@@ -36,6 +64,6 @@
 </p-radioButton>
 [disabled]="nom1.invalid"
 -->
-<br>
-<button pButton  class="ui-button-success" label="Ajouter"
-(click)="add()" ></button>
+  <br>
+  <button pButton class="ui-button-success" label="Ajouter" type="submit"></button>
+</form>
