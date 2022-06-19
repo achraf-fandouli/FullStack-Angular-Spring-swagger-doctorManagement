@@ -20,11 +20,18 @@
 </div>
   <br>
   <label for="float-input2">Email</label>
-  <input id="float-input2" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.emailAddress" 
+  <input id="float-input2" type="email" class="inputStyle" pInputText [(ngModel)]="doctor.emailAddress" 
   name="mail" #mail="ngModel"
-  required>
-<div *ngIf="f.submitted && prenom.invalid">
+  required email>
+<div *ngIf="f.submitted && mail.invalid">
+<div *ngIf="mail.errors?.['required']">
   Email réquis
+</div>
+
+<div *ngIf="mail.errors?.['email']">
+  Email Invalid
+</div>
+  
 </div>
   <br>
   <label for="float-input3">Phone</label>
