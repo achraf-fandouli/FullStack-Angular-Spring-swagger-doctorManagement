@@ -72,5 +72,6 @@
 [disabled]="nom1.invalid"
 -->
   <br>
-  <button pButton class="ui-button-success" label="Ajouter" type="submit"></button>
+  <button pButton class="ui-button-success" label="Ajouter" type="submit" *ngIf="!idDoctor"></button>
+  <button pButton class="p-button-warning" label="Modifier" type="submit" *ngIf="idDoctor"></button>
 </form>
