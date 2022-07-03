@@ -26,4 +26,8 @@ export class DoctorService {
   save(doctor:Doctor):Observable<any>{
     return this.httpClient.post(this.url,doctor);
   }
+
+  getById(id: number): Observable<Doctor>{
+    return this.httpClient.get<Doctor>(this.url+'/'+id);
+  }
 }

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { DoctorService } from "../core/services/doctor.service";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { Doctor } from "../shared/model/doctor";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor',

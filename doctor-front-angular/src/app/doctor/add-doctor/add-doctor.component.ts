@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Doctor } from "../../shared/model/doctor";
 import { DoctorService } from "../../core/services/doctor.service";
 import { MessageService } from "primeng/api";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-doctor',
@@ -12,11 +12,24 @@ import { Router } from '@angular/router';
 export class AddDoctorComponent implements OnInit {
 
   doctor = new Doctor();
+  idDoctor: any;
 
-  constructor(private doctorService: DoctorService, private messageService: MessageService, private router: Router) {
+  constructor(private doctorService: DoctorService, private messageService: MessageService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    //get('id') --> the id that declared in the Routes(appRroutingModule)
+    this.idDoctor = this.activatedRoute.snapshot.paramMap.get('id');
+    if(this.idDoctor){
+      this.getDoctorById(this.idDoctor);
+    }
+  }
+
+  getDoctorById(id: number) {
+    this.doctorService.getById(id).subscribe(res => {
+      this.doctor = res;
+    }, ex =>
+      console.log(ex));
   }
 
   add() {
