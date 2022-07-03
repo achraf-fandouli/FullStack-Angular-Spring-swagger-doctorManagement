@@ -6,6 +6,7 @@ import {AddDoctorComponent} from "./doctor/add-doctor/add-doctor.component";
 const routes: Routes = [
   {path: 'doctors', component: DoctorComponent},
   {path: 'doctors/new', component: AddDoctorComponent},
+  {path: 'doctors/edit/:id', component: AddDoctorComponent},
   {path: '', redirectTo: 'doctors', pathMatch: 'full'}
 ];
 
