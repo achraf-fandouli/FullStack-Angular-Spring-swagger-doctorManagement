@@ -28,7 +28,7 @@
 
         <button pButton class="p-button-danger" icon="pi pi-trash" (click)="delete(doctor.id)"></button>
 
-        <button pButton style="margin-left: 10px;" class="p-button-warning" icon="pi pi-pencil" routerLink="/doctors/edit/{{doctor.id}}"></button>
+        <button pButton style="margin-left: 10px;" class="p-button-warning" icon="pi pi-pencil" (click)="editDoctor(doctor.id)"></button>
 
       </td>
     </tr>

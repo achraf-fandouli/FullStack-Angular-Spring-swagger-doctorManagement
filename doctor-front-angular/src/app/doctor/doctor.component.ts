@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {DoctorService} from "../core/services/doctor.service";
-import {ConfirmationService, MessageService} from "primeng/api";
-import {Doctor} from "../shared/model/doctor";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { DoctorService } from "../core/services/doctor.service";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { Doctor } from "../shared/model/doctor";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor',
@@ -12,7 +13,7 @@ import {Doctor} from "../shared/model/doctor";
 export class DoctorComponent implements OnInit {
   public doctors: any;
 
-  constructor(private doctorServie: DoctorService, private confirmationService: ConfirmationService,private messageService: MessageService) {
+  constructor(private doctorServie: DoctorService, private confirmationService: ConfirmationService, private messageService: MessageService, private router :Router) {
   }
 
   ngOnInit(): void {
@@ -23,9 +24,9 @@ export class DoctorComponent implements OnInit {
 
   getAll() {
     this.doctorServie.getAll().subscribe(data => {
-        this.doctors = data;
-      }, ex =>
-        console.log(ex)
+      this.doctors = data;
+    }, ex =>
+      console.log(ex)
     );
   }
 
@@ -37,15 +38,17 @@ export class DoctorComponent implements OnInit {
       accept: () => {
         this.doctorServie.delete(id).subscribe(res => {
           this.getAll();
-          if(res.success=true){
+          if (res.success = true) {
             this.messageService.add({
-              severity:'success',
-              summary:res.message,detail:res.detail});
+              severity: 'success',
+              summary: res.message, detail: res.detail
+            });
           }
           else {
             this.messageService.add({
-              severity:'warn',
-              summary:res.message,detail:res.detail});
+              severity: 'warn',
+              summary: res.message, detail: res.detail
+            });
           }
           console.log(res);
 
@@ -56,9 +59,13 @@ export class DoctorComponent implements OnInit {
             summary: ex.message,
             detail: ex.detail
           });
-    
+
         });
       }
     });
+  }
+
+  editDoctor(id: number){
+    this.router.navigate(['/doctors/edit', id]);
   }
 }
