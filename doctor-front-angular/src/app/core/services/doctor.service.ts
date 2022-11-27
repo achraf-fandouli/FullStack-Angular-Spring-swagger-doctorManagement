@@ -30,4 +30,9 @@ export class DoctorService {
   getById(id: number): Observable<Doctor>{
     return this.httpClient.get<Doctor>(this.url+'/'+id);
   }
+
+  update(id:number,doctor: Doctor):Observable<any>{
+    return this.httpClient.put(this.url+'/'+id,doctor);
+  }
+
 }

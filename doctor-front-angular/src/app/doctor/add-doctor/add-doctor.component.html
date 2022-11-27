@@ -1,10 +1,11 @@
-<form #f="ngForm" (ngSubmit)="f.form.valid && add()">
+<form #f="ngForm" (ngSubmit)="f.form.valid">
 
 
-  <h2 class="elemCenter">Ajout nouveau Docteur </h2>
-  
+  <h2 class="elemCenter" *ngIf="!idDoctor">Ajout nouveau Docteur </h2>
+  <h2 class="elemCenter" *ngIf="idDoctor">Modifier Docteur: {{oldDoctorName}}-{{oldDoctorlastName}} </h2>
+
   <label for="float-input">Nom</label>
-  <input id="float-input" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.nom" 
+  <input id="float-input" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.nom"
   name="nom" #nom="ngModel"
     required>
   <div *ngIf="f.submitted && nom.invalid">
@@ -20,7 +21,7 @@
 </div>
   <br>
   <label for="float-input2">Email</label>
-  <input id="float-input2" type="email" class="inputStyle" pInputText [(ngModel)]="doctor.emailAddress" 
+  <input id="float-input2" type="email" class="inputStyle" pInputText [(ngModel)]="doctor.emailAddress"
   name="mail" #mail="ngModel"
   required email>
 <div *ngIf="f.submitted && mail.invalid">
@@ -31,11 +32,11 @@
 <div *ngIf="mail.errors?.['email']">
   Email Invalid
 </div>
-  
+
 </div>
   <br>
   <label for="float-input3">Phone</label>
-  <input id="float-input3" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.phone" 
+  <input id="float-input3" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.phone"
   name="phone" #phone="ngModel"
   required>
 <div *ngIf="f.submitted && phone.invalid">
@@ -43,7 +44,7 @@
 </div>
   <br>
   <label for="float-input4">Spécialité</label>
-  <input id="float-input4" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.specialite" 
+  <input id="float-input4" type="text" class="inputStyle" pInputText [(ngModel)]="doctor.specialite"
   name="specialite" #specialite="ngModel"
   required>
 <div *ngIf="f.submitted && specialite.invalid">
@@ -72,6 +73,6 @@
 [disabled]="nom1.invalid"
 -->
   <br>
-  <button pButton class="ui-button-success" label="Ajouter" type="submit" *ngIf="!idDoctor"></button>
-  <button pButton class="p-button-warning" label="Modifier" type="submit" *ngIf="idDoctor"></button>
+  <button pButton class="ui-button-success" label="Ajouter" type="submit" (click)="add()" *ngIf="!idDoctor"></button>
+  <button pButton class="p-button-warning" label="Modifier" (click)="update(idDoctor,doctor)" *ngIf="idDoctor"></button>
 </form>

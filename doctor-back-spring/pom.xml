@@ -19,7 +19,7 @@
 	<dependencies>
 
 		<!--two swagger dependences-->
-		<!--dependecy swagger2 : contai the core of swagger(API swagger, Annotation swagger,..)-->
+		<!--dependecy swagger2 : contain the core of swagger(API swagger, Annotation swagger,..)-->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>

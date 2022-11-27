@@ -13,6 +13,8 @@ export class AddDoctorComponent implements OnInit {
 
   doctor = new Doctor();
   idDoctor: any;
+  oldDoctorName:any;
+  oldDoctorlastName:any;
 
   constructor(private doctorService: DoctorService, private messageService: MessageService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
@@ -22,18 +24,54 @@ export class AddDoctorComponent implements OnInit {
     this.idDoctor = this.activatedRoute.snapshot.paramMap.get('id');
     if(this.idDoctor){
       this.getDoctorById(this.idDoctor);
+
+      //this.update(this.idDoctor, this.doctor);
     }
+
   }
 
   getDoctorById(id: number) {
     this.doctorService.getById(id).subscribe(res => {
       this.doctor = res;
+      this.oldDoctorName=this.doctor?.nom;
+      this.oldDoctorlastName=this.doctor?.lastname;
     }, ex =>
       console.log(ex));
   }
 
   add() {
     this.doctorService.save(this.doctor).subscribe(res => {
+      console.log(res);
+      if (res.success) {
+        this.router.navigate(['/doctors']);
+        this.messageService.add({
+          severity: 'success',
+          summary: res.message,
+          detail: res.detail
+        });
+
+      }
+      else {
+        this.messageService.add({
+          severity: 'warn',
+          summary: res.message,
+          detail: res.detail
+        });
+        //summary:res.message / summary:'Warning'
+
+      }
+    }, ex => {
+      console.log(ex);
+      this.messageService.add({
+        severity: 'error',
+        summary: ex.message,
+        detail: ex.detail
+      });
+
+    })
+  }
+  update(id : number, doctor: Doctor) {
+    this.doctorService.update(id, doctor).subscribe(res => {
       console.log(res);
       if (res.success) {
         this.router.navigate(['/doctors']);

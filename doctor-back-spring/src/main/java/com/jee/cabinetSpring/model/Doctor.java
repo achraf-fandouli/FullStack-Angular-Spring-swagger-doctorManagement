@@ -1,16 +1,20 @@
 package com.jee.cabinetSpring.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -20,39 +24,27 @@ import java.util.List;
 @Table(name = "doctors")
 public class Doctor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    //le champ dans le formulaire ne doit pas etre vide ni espace
-    @NotEmpty
-    //la taille de champs dans le formulaire
-    @Size(min = 2,max = 25,message = "la taille doit etre entre 2 et 25")
-    @Pattern(regexp = "[a-zA-Z]+",message = "le nom doit contenir que des alphabets")
-    @JsonProperty(value = "nom")//pour changer le nom de la propriete dans la partie frontend
-    private String firstname;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    //le champ dans le formulaire ne doit pas etre vide ni espace
-    @NotEmpty
-    //la taille de champs dans le formulaire
-    @Size(min = 2,max = 25,message = "la taille doit etre entre 2 et 25")
-    @Pattern(regexp = "[a-zA-Z]+",message = "le nom doit contenir que des alphabets")
-    private String lastname;
+	@NotEmpty
+	@Size(min = 2, max = 25, message = "la taille doit etre entre 2 et 25")
+	@Pattern(regexp = "[a-zA-Z]+", message = "le nom doit contenir que des alphabets")
+	@JsonProperty(value = "nom")
+	private String firstname;
 
-    //oblige les standars de l'adresse mail
-    @Email(message = "Donner une adresse mail valide")
-    private String emailAddress;
+	@NotEmpty
+	@Size(min = 2, max = 25, message = "la taille doit etre entre 2 et 25")
+	@Pattern(regexp = "[a-zA-Z]+", message = "le nom doit contenir que des alphabets")
+	private String lastname;
 
-    //le champ dans le formulaire ne doit pas etre vide ni espace
-    @NotEmpty
-    //la taille de champs dans le formulaire
-    //@Size(min = 8,max = 13,message = "la taille doit etre entre 3 et 13")
-    private String phone;
+	@Email(message = "Donner une adresse mail valide")
+	private String emailAddress;
 
-    //le champ dans le formulaire ne doit pas etre vide ni avec espace
-    @NotEmpty
-    private String specialite;
+	@NotEmpty
+	private String phone;
 
-//    @OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    private List<Rdv> rdvs;
-
+	@NotEmpty
+	private String specialite;
 }
